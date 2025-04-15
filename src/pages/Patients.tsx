@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import  usePatientStore  from "../store/PatientStore"
 import PatientCard from "../components/PatientCard";
 import { Plus, Search } from 'lucide-react';

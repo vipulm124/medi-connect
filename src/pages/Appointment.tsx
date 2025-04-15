@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import AppointmentCard from "../components/AppointmentCard";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,14 +8,14 @@ import  useAppointmentStore  from "../store/AppointmentStore"
 
 
 
-function addsubstractDays(date: Date, days: number) {
+function addsubstractDays(date: Date | null, days: number) {
     return moment(date)
         .add(days, 'days')
         .toDate();
 }
 
 function AppointmentPage() {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [searchKeyword, setSearchKeyword] = useState("");
   const allAppointments = useAppointmentStore((state) => state.appointments);
 

@@ -1,4 +1,4 @@
-import React from "react";
+
 import Card from "../components/Card";
 import { Users, Calendar } from "lucide-react"; 
 import AppointmentCard from "../components/AppointmentCard";

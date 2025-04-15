@@ -1,4 +1,4 @@
-import React from "react";
+
 import Patient from "../interfaces/IPatient";
 import { Calendar, User } from 'lucide-react';
 
@@ -37,7 +37,7 @@ function PatientCard({patientId, patientName, age, gender, phoneNumber, lastVisi
         <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-200">
         <div className="p-5">
           <div className="flex items-start mb-4">
-            <img src={get_gender_pic(gender)} alt="Patient avatar" className="w-16 h-16 rounded-full mr-4 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/64x64?text=Patient'"/>
+            <img src={get_gender_pic(gender)} alt="Patient avatar" className="w-16 h-16 rounded-full mr-4 object-cover" />
             <div className="flex-1">
               <h3 className="font-medium text-lg text-gray-900">{patientName}</h3>
               <div className="flex items-center text-gray-500 text-sm mt-1">
