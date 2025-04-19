@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ChevronLeft, ChevronRight, Plus, Search } from 'lucide-react';
 import moment from 'moment';
 import  useAppointmentStore  from "../store/AppointmentStore"
-
+import NewAppointmentModal from '../components/NewAppointmentModal';
 
 
 function addsubstractDays(date: Date | null, days: number) {
@@ -18,6 +18,15 @@ function AppointmentPage() {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const [searchKeyword, setSearchKeyword] = useState("");
   const allAppointments = useAppointmentStore((state) => state.appointments);
+  const [showNewAppointmentModal, setShowNewAppointmentModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowNewAppointmentModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowNewAppointmentModal(false);
+  };
 
   const appointments = allAppointments.filter(
     (appointment) =>
@@ -27,6 +36,7 @@ function AppointmentPage() {
 
 
   return (
+    <>
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
         <div>
@@ -37,8 +47,8 @@ function AppointmentPage() {
         </div>
         <div className="mt-4 md:mt-0 flex flex-col sm:flex-row gap-3">
           <button
-            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            id="newAppointmentBtn"
+            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 hover:cursor-grab"
+            id="newAppointmentBtn" onClick={handleOpenModal}
           >
             <Plus className="mr-2"/>
             New Appointment
@@ -79,6 +89,8 @@ function AppointmentPage() {
           ))}
       </div>
     </div>
+    {showNewAppointmentModal && <NewAppointmentModal isVisible={showNewAppointmentModal} onClose={handleCloseModal} />}
+    </>
   );
 }
 
